@@ -15,7 +15,7 @@ namespace Spider.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Value = table.Column<string>(maxLength: 255, nullable: true)
+                    Value = table.Column<string>(maxLength: 400, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -28,7 +28,7 @@ namespace Spider.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Value = table.Column<string>(maxLength: 255, nullable: true)
+                    Value = table.Column<string>(maxLength: 400, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -41,7 +41,7 @@ namespace Spider.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Value = table.Column<string>(maxLength: 255, nullable: true)
+                    Value = table.Column<byte[]>(maxLength: 32, nullable: true)
                 },
                 constraints: table =>
                 {

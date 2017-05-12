@@ -16,8 +16,8 @@ namespace Spider.DAL
         [Key]
         public int Id { get; set; }
 
-        [StringLength(maximumLength: 400)]
-        public string Value { get; set; }
+        [MaxLength(32)]
+        public byte[] Value { get; set; }
     }
 
     public class FoundEntity

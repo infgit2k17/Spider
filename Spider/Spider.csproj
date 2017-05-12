@@ -131,17 +131,17 @@
     <Compile Include="Browser.cs" />
     <Compile Include="Checker.cs" />
     <Compile Include="IUrlExtractor.cs" />
-    <Compile Include="Migrations\20170511144309_Init.cs" />
-    <Compile Include="Migrations\20170511144309_Init.designer.cs">
-      <DependentUpon>20170511144309_Init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\SpiderContextModelSnapshot.cs" />
     <Compile Include="DAL\Models.cs" />
     <Compile Include="DAL\SpiderContext.cs" />
     <Compile Include="IBrowser.cs" />
     <Compile Include="IChecker.cs" />
     <Compile Include="DAL\IDatabase.cs" />
     <Compile Include="IRepository.cs" />
+    <Compile Include="Migrations\20170512125756_Init.cs" />
+    <Compile Include="Migrations\20170512125756_Init.designer.cs">
+      <DependentUpon>20170512125756_Init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\SpiderContextModelSnapshot.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository.cs" />

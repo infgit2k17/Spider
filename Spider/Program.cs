@@ -14,9 +14,6 @@ namespace Spider
                 spider.Start();
             else 
                 spider.Start(url);
-
-            Console.WriteLine("Press button to stop Spider...");
-            spider.Stop();
         }
 
         private static Spider CreateSpider()

@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace Spider.DAL
 {
@@ -11,6 +13,7 @@ namespace Spider.DAL
         public DbSet<FoundEntity> Found { get; set; }
 
         private string _buffer;
+        private readonly MD5 _md5 = MD5.Create();
 
         public SpiderContext() : base(BuildDbContextOptions())
         { }
@@ -61,7 +64,7 @@ namespace Spider.DAL
 
         public void AddVisited(string url)
         {
-            Visited.Add(new VisitedEntity { Value = url });
+            Visited.Add(new VisitedEntity { Value = GetMd5Hash(url) });
             SaveChanges();
         }
 
@@ -76,7 +79,8 @@ namespace Spider.DAL
             if (Queue.Any(i => i.Value == url))
                 return false;
 
-            if (Visited.Any(i => i.Value == url))
+            byte[] hash = GetMd5Hash(url);
+            if (Visited.Any(i => i.Value.SequenceEqual(hash)))
                 return false;
 
             if (Found.Any(i => i.Value == url))
@@ -88,6 +92,11 @@ namespace Spider.DAL
         public void Close()
         {
             // ignored
+        }
+
+        private byte[] GetMd5Hash(string s)
+        {
+            return _md5.ComputeHash(Encoding.UTF8.GetBytes(s));
         }
     }
 }
