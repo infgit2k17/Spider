@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Spider.DAL;
+using System;
 
 namespace Spider
 {

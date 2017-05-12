@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Spider
+namespace Spider.DAL
 {
     public class SpiderContext : DbContext, IDatabase
     {
@@ -21,7 +21,7 @@ namespace Spider
         private static DbContextOptions<SpiderContext> BuildDbContextOptions()
         {
             var options = new DbContextOptionsBuilder<SpiderContext>();
-            options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=spider-database;Trusted_Connection=True;MultipleActiveResultSets=true");
+            options.UseSqlServer(@"Data Source=.\SQLEXPRESS;Database=Spider;Integrated Security=True;");
 
             return options.Options;
         }

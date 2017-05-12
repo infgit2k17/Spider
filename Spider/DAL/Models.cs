@@ -1,13 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Spider
+namespace Spider.DAL
 {
     public class UrlEntity
     {
         [Key]
         public int Id { get; set; }
 
-        [StringLength(maximumLength: 255)]
+        [StringLength(maximumLength: 400)]
         public string Value { get; set; }
     }
 
@@ -16,7 +16,7 @@ namespace Spider
         [Key]
         public int Id { get; set; }
 
-        [StringLength(maximumLength: 255)]
+        [StringLength(maximumLength: 400)]
         public string Value { get; set; }
     }
 
@@ -25,7 +25,7 @@ namespace Spider
         [Key]
         public int Id { get; set; }
 
-        [StringLength(maximumLength: 255)]
+        [StringLength(maximumLength: 400)]
         public string Value { get; set; }
     }
 }

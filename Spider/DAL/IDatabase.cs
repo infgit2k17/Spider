@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Spider
+namespace Spider.DAL
 {
     public interface IDatabase
     {

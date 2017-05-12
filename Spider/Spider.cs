@@ -71,7 +71,8 @@ namespace Spider
             else
                 _repo.AddVisited(url);
 
-            _repo.Enqueue(_browser.FindUrls(html));
+            string domain = _browser.ExtractDomain(url);
+            _repo.Enqueue(_browser.FindUrls(html, domain));
         }
 
         private bool IsInvalidPage(string html)

@@ -135,11 +135,11 @@
       <DependentUpon>20170511144309_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\SpiderContextModelSnapshot.cs" />
-    <Compile Include="Models.cs" />
-    <Compile Include="SpiderContext.cs" />
+    <Compile Include="DAL\Models.cs" />
+    <Compile Include="DAL\SpiderContext.cs" />
     <Compile Include="IBrowser.cs" />
     <Compile Include="IChecker.cs" />
-    <Compile Include="IDatabase.cs" />
+    <Compile Include="DAL\IDatabase.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

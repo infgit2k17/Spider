@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Spider.DAL;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 
@@ -35,7 +36,7 @@ namespace Spider
             var findNewInDbThread = new Thread(() => FindNewInDb(urlsList));
             findNewInDbThread.Start();
 
-            var findNewThread = new Thread(() => FindNewInDb(urlsList));
+            var findNewThread = new Thread(() => FindNew(urlsList));
             findNewThread.Start();
 
             findNewThread.Join();

@@ -1,4 +1,5 @@
 ﻿using HtmlAgilityPack;
+using System;
 using System.Collections.Generic;
 using System.Net;
 
@@ -8,15 +9,22 @@ namespace Spider
     {
         public string Browse(string url)
         {
-            using (WebClient client = new WebClient())
+            using (var client = new WebClient())
             {
-                return client.DownloadString(url);
+                try
+                {
+                    return client.DownloadString(url);
+                }
+                catch (WebException)
+                {
+                    return null;
+                }
             }
         }
 
-        public IEnumerable<string> FindUrls(string html)
+        public IEnumerable<string> FindUrls(string html, string domain)
         {
-            var hrefTags = new List<string>();
+            var links = new List<string>();
 
             var doc = new HtmlDocument();
             doc.LoadHtml(html);
@@ -24,15 +32,20 @@ namespace Spider
             var nodes = doc.DocumentNode.SelectNodes("//a[@href]");
 
             if (nodes == null)
-                return hrefTags;
+                return links;
 
-            foreach (HtmlNode link in nodes)
+            foreach (HtmlNode node in nodes)
             {
-                HtmlAttribute att = link.Attributes["href"];
-                hrefTags.Add(att.Value);
+                string link = node.Attributes["href"].Value;
+                links.Add(link);
             }
 
-            return hrefTags;
+            return links;
+        }
+
+        public string ExtractDomain(string url)
+        {
+            return new Uri(url).Host;
         }
     }
 }
