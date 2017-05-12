@@ -7,16 +7,18 @@ namespace Spider
         private readonly IRepository _repo;
         private readonly IBrowser _browser;
         private readonly IChecker _checker;
+        private readonly IUrlExtractor _extractor;
         private bool _status;
 
         public event FoundEventHandler Found;
         public event StoppedEventHandler Stopped;
 
-        public Spider(IRepository repo, IBrowser browser, IChecker checker)
+        public Spider(IRepository repo, IBrowser browser, IChecker checker, IUrlExtractor extractor)
         {
             _repo = repo;
             _browser = browser;
             _checker = checker;
+            _extractor = extractor;
             _status = true;
         }
 
@@ -29,7 +31,6 @@ namespace Spider
         public void Start(string initialUrl)
         {
             _repo.Enqueue(new[] { initialUrl });
-
             Start();
         }
 
@@ -71,8 +72,7 @@ namespace Spider
             else
                 _repo.AddVisited(url);
 
-            string domain = _browser.ExtractDomain(url);
-            _repo.Enqueue(_browser.FindUrls(html, domain));
+            _repo.Enqueue(_extractor.ExtractUrls(html, url));
         }
 
         private bool IsInvalidPage(string html)

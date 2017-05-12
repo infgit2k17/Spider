@@ -22,7 +22,12 @@ namespace Spider
         private static Spider CreateSpider()
         {
             var repo = new Repository(new SpiderContext());
-            var spider = new Spider(repo, new Browser(), new Checker("Grzesio Łysio"));
+            var extractor = new UrlExtractor
+            {
+                AllowPattern = @"pl\.wikipedia\.org.+polska",
+                DisallowPattern = @"(\.(jpg|png|svg|pdf|mp4)|\?.+=)" // disallow files and urls with parameters
+            };
+            var spider = new Spider(repo, new Browser(), new Checker("Grzesio Łysio"), extractor);
             spider.Found += OnFound;
             spider.Stopped += OnStopped;
 

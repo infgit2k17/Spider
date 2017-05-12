@@ -130,6 +130,7 @@
   <ItemGroup>
     <Compile Include="Browser.cs" />
     <Compile Include="Checker.cs" />
+    <Compile Include="IUrlExtractor.cs" />
     <Compile Include="Migrations\20170511144309_Init.cs" />
     <Compile Include="Migrations\20170511144309_Init.designer.cs">
       <DependentUpon>20170511144309_Init.cs</DependentUpon>
@@ -146,6 +147,7 @@
     <Compile Include="Repository.cs" />
     <Compile Include="Spider.cs" />
     <Compile Include="SpiderEvents.cs" />
+    <Compile Include="UrlExtractor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
